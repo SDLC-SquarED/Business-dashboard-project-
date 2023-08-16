@@ -20,7 +20,7 @@ const StockNews = () => {
       .catch((error) => {
         console.error("Error fetching stock news:", error);
       });
-  }, []); // Empty dependency array, runs once on component mount
+  }, []);
 
   return (
     <div className="bg-gray-100 p-4 rounded shadow">
