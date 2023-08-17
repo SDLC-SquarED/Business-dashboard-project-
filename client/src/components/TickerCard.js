@@ -22,19 +22,17 @@ export const TickerCard = () => {
   }, []);
 
   return (
-    <div>
-      <div>TickerCard</div>
-      <div className="text-2xl text-red-300">Testing</div>
+    <div style={{ backgroundColor: 'white', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', padding: '16px' }}>
+      <div style={{ fontWeight: 'bold', fontSize: '24px', marginBottom: '8px' }}>TickerCard</div>
+      <div style={{ fontSize: '20px', color: '#F87171', marginBottom: '16px' }}>Testing</div>
       {stockPrice !== null ? (
         <div>
-          <h2>IBM Stock Price</h2>
-          <div>Price: {stockPrice}</div>
+          <h2 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '4px' }}>IBM Stock Price</h2>
+          <div style={{ fontSize: '24px', color: '#34D399' }}>Price: {stockPrice}</div>
         </div>
       ) : (
-        <div>Loading stock price...</div>
+        <div style={{ color: '#6B7280' }}>Loading stock price...</div>
       )}
     </div>
   );
 };
-
-
