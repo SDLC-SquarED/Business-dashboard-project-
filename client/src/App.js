@@ -34,6 +34,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full h-full">
             {/* Left middle rectangle */}
             <div className="bg-zinc-300 p-4">
+              <StockChart />
               <p className="text-white text-center">Left middle rectangle</p>
             </div>
 
@@ -48,6 +49,7 @@ function App() {
 
       {/* News */}
       <div className="h-1/3 bg-cyan-600 mt-4">
+        <StockNews />
         <p className="text-white text-center p-4">News</p>
       </div>
     </div>

@@ -12,8 +12,8 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
-const apiKey1 = process.env.ALPHA_VANTAGE_API_KEY;
-const apikey2 = process.env.ALPHA_VANTAGE_API_KEY2;
+// const apiKey1 = process.env.ALPHA_VANTAGE_API_KEY;
+// const apikey2 = process.env.ALPHA_VANTAGE_API_KEY2;
 const unemploymentUrl = `https://www.alphavantage.co/query?function=UNEMPLOYMENT&apikey=demo`;
 const inflationUrl = `https://www.alphavantage.co/query?function=INFLATION&apikey=demo`;
 
@@ -106,13 +106,6 @@ export const LineChart = () => {
   );
   const labels = unemploymentLabel;
 
-  const randomNumGenerator = () => {
-    const min = -1000;
-    const max = 1000;
-    const randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
-    return randomInt;
-  };
-
   const data = {
     labels,
     datasets: [
@@ -144,7 +137,6 @@ export const LineChart = () => {
   return (
     <>
       <Line options={options} data={data} />
-      <div>lineChart</div>;
     </>
   );
 };
