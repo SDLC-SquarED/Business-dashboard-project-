@@ -78,9 +78,17 @@ export const LineChart = () => {
     ],
   };
 
+  const options = {
+    responsive: true,
+    title: {
+      display: true,
+      text: "Chart.js Line Chart",
+    },
+  };
+
   return (
     <>
-      <Line data={data} />
+      <Line options={options} data={data} />
       <div>lineChart</div>;
     </>
   );
