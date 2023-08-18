@@ -37,7 +37,6 @@ export const StockChart = () => {
       }));
 
       setData(newData);
-      console.log(newData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -49,6 +48,7 @@ export const StockChart = () => {
 
   const handleIntervalChange = (selectedInterval) => {
     setInterval(selectedInterval);
+    console.log(interval);
     fetchData(selectedInterval);
   };
 

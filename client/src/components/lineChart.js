@@ -45,7 +45,6 @@ export const LineChart = () => {
         console.error(err);
       }
     };
-
     fetchUnemployment();
     fetchInflation(); // Call the fetchData function
   }, []); // Empty dependency array for now
@@ -78,7 +77,6 @@ export const LineChart = () => {
       12,
       -1
     );
-    console.log(averageUnemployment);
 
     unemploymentLabel = averageUnemployment.map((dataset) => {
       return dataset.year;
@@ -91,7 +89,6 @@ export const LineChart = () => {
       .map((dataset) => {
         return dataset.value;
       });
-    console.log("inflation data", dataForInflation);
   }
   // console.log(unemploymentLabel);
 
