@@ -18,12 +18,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
    <GoogleOAuthProvider clientId={googleClientID}>
     <React.StrictMode>
+
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/app" element={<App />} />
         </Routes>
       </Router>
+
     </React.StrictMode>
 
    </GoogleOAuthProvider> 
