@@ -3,6 +3,7 @@ import { StockChart } from "./components/StockChart";
 import StockNews from "./components/StockNews";
 import { LineChart } from "./components/lineChart";
 import { TickerCard } from "./components/TickerCard";
+import BitcoinChart from "./components/bitcoinchart"
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <div className="flex-1 bg-zinc-300">
             <p className="text-white text-center p-4">
               Side Bar Bottom Rectangle
+              <BitcoinChart/>
             </p>
           </div>
         </div>

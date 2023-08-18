@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Chart as ChartJS, BarElement } from 'chart.js';
+import { Chart as ChartJS, ArcElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-ChartJS.register(BarElement);
+ChartJS.register(ArcElement);
 
 const BitcoinChart = () => {
   const [chart, setChart] = useState({});
