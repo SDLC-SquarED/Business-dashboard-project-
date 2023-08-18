@@ -30,29 +30,41 @@ export const Login = () => {
     }
   }, [user]);
 
-  // log out function to log the user out of google and set the profile array to null
   const logOut = () => {
     googleLogout();
     setProfile(null);
   };
 
   return (
-    <div>
-      <h2>React Google Login</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h2 className="text-2xl font-bold mb-4">React Google Login</h2>
       <br />
       <br />
       {profile ? (
-        <div>
-          <img src={profile.picture} alt="user image" />
-          <h3>User Logged in</h3>
-          <p>Name: {profile.name}</p>
+        <div className="text-center">
+          <img
+            src={profile.picture}
+            alt="user image"
+            className="w-20 h-20 mx-auto rounded-full mb-4"
+          />
+          <h3 className="text-xl font-semibold">User Logged in</h3>
+          <p className="mb-2">Name: {profile.name}</p>
           <p>Email Address: {profile.email}</p>
           <br />
-          <br />
-          <button onClick={logOut}>Log out</button>
+          <button
+            onClick={logOut}
+            className="px-4 py-2 mt-4 bg-red-500 text-white rounded hover:bg-red-600"
+          >
+            Log out
+          </button>
         </div>
       ) : (
-        <button onClick={() => login()}>Sign in with Google 🚀 </button>
+        <button
+          onClick={() => login()}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Sign in with Google 🚀
+        </button>
       )}
     </div>
   );

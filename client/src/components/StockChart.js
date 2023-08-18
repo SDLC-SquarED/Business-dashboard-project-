@@ -72,18 +72,34 @@ export const StockChart = () => {
 
   return (
     <div>
-      <h2>Stock Candlestick Chart</h2>
-      <div>
-        <button onClick={() => handleIntervalChange("daily")}>Daily</button>
-        <button onClick={() => handleIntervalChange("weekly")}>Weekly</button>
-        <button onClick={() => handleIntervalChange("monthly")}>Monthly</button>
+      <h2 className="text-xl font-semibold">Stock Candlestick Chart</h2>
+      <div className="space-x-4 mt-4">
+        <button
+          className={`py-2 px-4 rounded focus:outline-none ${
+            interval === 'daily' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+          }`}
+          onClick={() => handleIntervalChange('daily')}
+        >
+          Daily
+        </button>
+        <button
+          className={`py-2 px-4 rounded focus:outline-none ${
+            interval === 'weekly' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+          }`}
+          onClick={() => handleIntervalChange('weekly')}
+        >
+          Weekly
+        </button>
+        <button
+          className={`py-2 px-4 rounded focus:outline-none ${
+            interval === 'monthly' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+          }`}
+          onClick={() => handleIntervalChange('monthly')}
+        >
+          Monthly
+        </button>
       </div>
-      <ReactApexChart
-        options={options}
-        series={[{ data: data }]}
-        type="candlestick"
-        height={400}
-      />
+      <ReactApexChart options={options} series={[{ data: data }]} type="candlestick" height={400} />
     </div>
   );
 };
