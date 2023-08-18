@@ -1,35 +1,31 @@
-const express = require("express");
-const cors = require("cors");
-const app = express();
-const PORT = 5000;
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
 
-const corsOptions = {
-  origin: ["http://localhost:3000"],
-  optionsSuccessStatus: 200,
-};
+
+const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
+// app.use(express.urlencoded({ extended: true }));
 
 // Connect to MongoDB
-const MONGO_URI =
-'mongodb+srv://lmercedes03:kWfRIlNOecaTp8rU@cluster0.wssqiab.mongodb.net/business_dashboard?retryWrites=true&w=majority';
 
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-})
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('Failed to connect to MongoDB:', err));
+const MONGO_URI = process.env.MONGO_URI;
 
-//Endpoints go here
-//ex. app.get("/express_backend", cors(corsOptions), (req, res) => {
-//   res.send({ express: "YOUR EXPRESS BACKEND IS CONNECTED TO REACT" });
-// });
+mongoose
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("Failed to connect to MongoDB:", err));
 
+// Set up routes
+const apiRoutes = require('./routes/api'); // Import  API routes
+app.use('/api', apiRoutes); // Use the API routes under the /api prefix
+
+// Start the server
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+  console.log(`Server is listening on port ${PORT}`);
+}); 

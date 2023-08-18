@@ -21,7 +21,7 @@ module.exports = {
     // enable HMR on the devServer
     hot: true,
     // fallback to root for other urls
-    historyApiFallback: true,
+    // historyApiFallback: true,
 
     static: {
       // match the output path
@@ -57,9 +57,12 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-syntax-jsx']
+          },
         },
       },
-      
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,

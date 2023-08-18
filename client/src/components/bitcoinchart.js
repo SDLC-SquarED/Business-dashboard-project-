@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Chart as ChartJS, BarElement } from 'chart.js';
+import { Chart as ChartJS, ArcElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-ChartJS.register(BarElement);
+ChartJS.register(ArcElement);
 
 const BitcoinChart = () => {
   const [chart, setChart] = useState({});
   const baseUrl = "https://api.coinranking.com/v2/coins/?limit=10";
-  const apiKey = "coinrankingd4a23cdd9810989493fefa52536e5ab5af27ece948a123e2";
+  const apiKey = process.env.REACT_APP_BITCOIN_API;
+
 
   useEffect(() => {
     const fetchCoins = async () => {
