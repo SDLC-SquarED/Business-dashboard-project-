@@ -3,6 +3,7 @@ import { StockChart } from "./components/StockChart";
 import StockNews from "./components/StockNews";
 import { LineChart } from "./components/lineChart";
 import BitcoinChart from "./components/bitcoinchart"
+import ChartComponent from './components/bitcoinline'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         {/* Left Sidebars */}
         <div className="flex-none w-full md:w-1/4 flex flex-col mb-4 md:mb-0 md:mr-4">
           {/* Left Sidebar Top Rectangle */}
+          <ChartComponent/>
           <div className="flex-1 bg-amber-400 mb-4">
             <p className="text-white text-center p-4">
               Left Sidebar Top Rectangle

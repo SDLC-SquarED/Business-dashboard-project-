@@ -13,10 +13,10 @@ root.render(
   <GoogleOAuthProvider clientId={googleClientID}>
     <React.StrictMode>
       <Login />
-      {/* <App /> */}
+      <App />
 
     </React.StrictMode>
-  </GoogleOAuthProvider>
+  // </GoogleOAuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
