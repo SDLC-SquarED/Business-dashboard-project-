@@ -29,6 +29,7 @@ export const TickerCard = () => {
     console.log('Alerts icon clicked');
   };
 
+  
   const handleHelpClick = () => {
     // Handle click logic for help icon
     console.log('Help icon clicked');
