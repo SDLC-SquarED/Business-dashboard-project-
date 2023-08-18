@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { HiHeart, HiOutlineBell } from 'react-icons/hi';
+import { FiHelpCircle } from 'react-icons/fi';
 
 export const TickerCard = () => {
   const [stockData, setStockData] = useState([]);
@@ -18,22 +20,30 @@ export const TickerCard = () => {
   }, []);
 
   return (
-    
-
-    
-  
     <div className="flex space-x-4">
       {stockData.length > 0 ? (
         stockData.map((stockItem, index) => (
-          <div key={index} className="bg-blue-200 rounded-lg shadow-md p-4">
-            <div className="font-bold text-2xl mb-2">
-              {stockItem.symbol} ({stockItem.symbol})
+          <div
+            key={index}
+            className="bg-gray-200 rounded-lg shadow-md p-4"
+          >
+            <div className="flex justify-between items-center">
+              <div className="font-bold text-2xl">
+                {stockItem.symbol} ({stockItem.symbol})
+              </div>
+              <div className="text-gray-600">
+                <div>Price: {stockItem.price}</div>
+                <div>Previous Close: {stockItem.close}</div>
+                <div>Day Open: {stockItem.open}</div>
+                <div>Day High: {stockItem.high}</div>
+                <div>Day Low: {stockItem.low}</div>
+              </div>
+              <div className="text-red-500 text-2xl">
+                <HiHeart />
+                <HiOutlineBell />
+                <FiHelpCircle />
+              </div>
             </div>
-            <div>Price: {stockItem.price}</div>
-            <div>Previous Close Price: {stockItem.close}</div>
-            <div>Day Open: {stockItem.open}</div>
-            <div>Day High: {stockItem.high}</div>
-            <div>Day Low: {stockItem.low}</div>
           </div>
         ))
       ) : (
