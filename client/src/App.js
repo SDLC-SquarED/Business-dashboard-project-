@@ -11,6 +11,12 @@ function App() {
       <div className="h-16 bg-gradient-to-r from-neutral-400 via-neutral-300 to-zinc-300 mb-4">
         <h1 className="text-white text-center p-4">Header</h1>
       </div>
+      {/* Left Sidebar Top Rectangle */}
+      <div className="flex-1 bg-amber-400 mb-4">
+        {/* TickerCard Component */}
+        <TickerCard />
+        <p className="text-white text-center p-4">Left Sidebar Top Rectangle</p>
+      </div>
 
       <div className="flex flex-col md:flex-row flex-1 mb-4">
         {/* Left Sidebars */}

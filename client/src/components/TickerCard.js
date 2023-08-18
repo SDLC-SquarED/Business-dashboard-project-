@@ -19,6 +19,9 @@ export const TickerCard = () => {
 
   return (
     
+
+    
+  
     <div className="flex space-x-4">
       {stockData.length > 0 ? (
         stockData.map((stockItem, index) => (
