@@ -21,7 +21,7 @@ module.exports = {
     // enable HMR on the devServer
     hot: true,
     // fallback to root for other urls
-    historyApiFallback: true,
+    // historyApiFallback: true,
 
     static: {
       // match the output path
