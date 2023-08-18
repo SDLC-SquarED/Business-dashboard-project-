@@ -5,30 +5,27 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
-    username: {
+    // Fields for Google OAuth
+    googleId: {
       type: String,
-      trim: true,
-      unique: true,
-      required: 'Username is Required',
     },
-    password: {
+    googleAccessToken: {
       type: String,
-      trim: true,
-      required: 'Password is Required',
-      minlength: 6,
     },
-    email: {
+    googleRefreshToken: {
       type: String,
-      unique: true,
-      match: [/.+@.+\..+/],
     },
     watchlist: [{
       type: Schema.Types.ObjectId,
       ref: 'watchlist'
     }],
-  });
+  },
+  {
+    timestamps: true,
+  }
+);
   
-  const watchlistSchema = new Schema({
+const watchlistSchema = new Schema({
   symbol: {
     type: String,
     required: true,
