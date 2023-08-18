@@ -13,9 +13,11 @@ import {
 import { Line } from "react-chartjs-2";
 
 // const apiKey1 = process.env.ALPHA_VANTAGE_API_KEY;
-// const apikey2 = process.env.ALPHA_VANTAGE_API_KEY2;
-const unemploymentUrl = `https://www.alphavantage.co/query?function=UNEMPLOYMENT&apikey=demo`;
-const inflationUrl = `https://www.alphavantage.co/query?function=INFLATION&apikey=demo`;
+// const apikey2 = process.env.REACT_APP_ALPHA_VANTAGE_API_KEY2;
+// console.log(apikey2);
+
+const unemploymentUrl = process.env.REACT_APP_UNEMPLOYMENT_URL;
+const inflationUrl = process.env.REACT_APP_INFLATION_URL;
 
 export const LineChart = () => {
   // Capitalize component name
