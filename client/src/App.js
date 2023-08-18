@@ -4,8 +4,10 @@ import { StockChart } from "./components/StockChart";
 import StockNews from "./components/StockNews";
 import { LineChart } from "./components/lineChart";
 import BitcoinChart from "./components/bitcoinchart"
+
 import SearchBar from "./components/SearchBar"
 import CompanyModal from './components/CompanyModal';
+import ChartComponent from './components/bitcoinline'
 
 
 function App() {
@@ -30,7 +32,10 @@ function App() {
       <div className="flex flex-col md:flex-row flex-1 mb-4">
         {/* Left sidebars */}
         <div className="flex-none w-full md:w-1/4 flex flex-col mb-4 md:mb-0 md:mr-4">
-          {/* Left sidebar top rectangle */}
+
+          {/* Left Sidebar Top Rectangle */}
+          <ChartComponent/>
+
           <div className="flex-1 bg-amber-400 mb-4">
             <p className="text-white text-center p-4">Left sidebar top rectangle</p>
           </div>
