@@ -4,12 +4,16 @@ import { BsSearch } from "react-icons/bs";
 import DarkModeButton from "./DarkModeButton";
 import debounce from 'lodash.debounce';
 
+const apiKey= process.env.REACT_APP_IEX;
+console.log(apiKey)
+
 const SearchBar = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isLoaded, setLoaded] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -24,7 +28,7 @@ const SearchBar = (props) => {
   useEffect(() => {
     if (searchQuery.trim() !== "") {
       //Trim stops making a request when only empty spaces are typed in the search bar
-      const url = `https://api.iex.cloud/v1/data/core/company/${searchQuery}?token=`;
+      const url = `https://api.iex.cloud/v1/data/core/company/${searchQuery}?token=${apiKey}`;
 
       axios
         .get(url)
