@@ -23,6 +23,8 @@ export const TickerCard = () => {
     console.log(`Clicked ${action} icon`);
   };
 
+  
+
   return (
     <div className="flex space-x-4">
       {stockData.length > 0 ? (
