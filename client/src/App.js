@@ -61,16 +61,17 @@ function App() {
             {/* Right middle chart */}
             <div className=" bg-zinc-300">
             <LineChart />
-              <p className="text-white text-center">Right middle chart</p>
+              <p className="text- text-center">Right middle chart</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* News */}
-      <div className="h-1/3 bg-cyan-600 mt-4">
+      <p className="text-black text-center p-4">News</p>
+      <div className="h-1/2.5 bg-cyan-600 mt-4">
       <StockNews />
-        <p className="text-white text-center p-4">News</p>
+       
       </div>
       {
   companyData && <CompanyModal companyData={companyData} onClose={closeModal} />
