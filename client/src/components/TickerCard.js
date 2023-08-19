@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { HiHeart, HiOutlineBell } from 'react-icons/hi';
+import { HiHeart, HiOutlineBell, HiOutlineQuestionMarkCircle } from 'react-icons/hi';
 import { FiHelpCircle } from 'react-icons/fi';
 
 export const TickerCard = () => {
@@ -12,27 +12,15 @@ export const TickerCard = () => {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        setStockData(data); 
+        setStockData(data); // Assuming data is an array
       })
       .catch(error => {
         console.error('Error fetching stock data:', error);
       });
   }, []);
 
-  const handleHeartClick = () => {
-    // Handle click logic for heart icon
-    console.log('Watchlist icon clicked');
-  };
-
-  const handleBellClick = () => {
-    // Handle click logic for bell icon
-    console.log('Alerts icon clicked');
-  };
-
-  
-  const handleHelpClick = () => {
-    // Handle click logic for help icon
-    console.log('Help icon clicked');
+  const handleIconClick = (action) => {
+    console.log(`Clicked ${action} icon`);
   };
 
   return (
@@ -43,24 +31,30 @@ export const TickerCard = () => {
             key={index}
             className="bg-gray-200 rounded-lg shadow-md p-4"
           >
-            <div className="font-bold text-2xl mb-2">
+            <div className="font-bold text-2xl">
               {stockItem.symbol} ({stockItem.symbol})
             </div>
-            <div className="text-red-500 text-2xl flex space-x-4">
-              <button onClick={handleHeartClick} className="flex flex-col items-center">
-                <HiHeart />
-                <div className="text-xs">Watchlist</div>
-              </button>
-              <button onClick={handleBellClick} className="flex flex-col items-center">
-                <HiOutlineBell />
-                <div className="text-xs">Alerts</div>
-              </button>
-              <button onClick={handleHelpClick} className="flex flex-col items-center">
-                <FiHelpCircle />
-                <div className="text-xs">Help</div>
-              </button>
+            <div className="flex items-center mt-2 space-x-4 text-sm">
+              <div
+                className="flex items-center cursor-pointer"
+                onClick={() => handleIconClick('Watchlist')}
+              >
+                <HiHeart className="text-red-500 text-lg" /> Watchlist
+              </div>
+              <div
+                className="flex items-center cursor-pointer"
+                onClick={() => handleIconClick('Alert')}
+              >
+                <HiOutlineBell className="text-blue-500 text-lg" /> Alert
+              </div>
+              <div
+                className="flex items-center cursor-pointer"
+                onClick={() => handleIconClick('Help')}
+              >
+                <FiHelpCircle className="text-green-500 text-lg" /> Help
+              </div>
             </div>
-            <div className="text-gray-600 mt-2">
+            <div className="text-gray-600">
               <div>Price: {stockItem.price}</div>
               <div>Previous Close: {stockItem.close}</div>
               <div>Day Open: {stockItem.open}</div>
@@ -75,6 +69,4 @@ export const TickerCard = () => {
     </div>
   );
 };
-
-
 
