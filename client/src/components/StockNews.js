@@ -2,63 +2,65 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 const StockNews = () => {
   const [newsData, setNewsData] = useState([]);
+
   useEffect(() => {
-    const apiKey = "Q544DECZWVWNU3FZ";
-    const apiUrl = `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=COIN,CRYPTO:BTC,FOREX:USD&time_from=20220410T0130&limit=5&apikey=${apiKey}`;
+    const apiKey = process.env.REACT_APP_NEWS_IEX;
+    const apiUrl = `https://api.stockdata.org/v1/news/all?symbols=TSLA,AMZN,MSFT&filter_entities=true&language=en&api_token=${apiKey}`;
+    
     axios
       .get(apiUrl)
       .then((response) => {
-        console.log(response);
-        const feed = response.data?.data?.feed || [];
-        setNewsData(feed);
+        const articles = response.data.data || [];
+        const englishArticles = articles.filter(
+          (article) => article.language === "en"
+        );
+        setNewsData(englishArticles);
       })
       .catch((error) => {
         console.error("Error fetching stock news:", error);
       });
   }, []);
+
   return (
-    <div className="bg-gray-100 p-4 rounded shadow">
-      <h2 className="text-lg font-semibold mb-2">Stock News</h2>
+    <div className="bg-gray-00 p-0 rounded shadow text-center">
       <Carousel
         showArrows={true}
         showThumbs={false}
         showStatus={false}
-        width={600}
-        height={200}
+        centerMode
+        centerSlidePercentage={33.33} // Each slide occupies 33.33% of the width
+        autoPlay={true}
+        stopOnHover={true}
+        infiniteLoop={true}
       >
         {newsData.map((article, index) => (
-          <div key={index}>
-            <a
-              href={article.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <div className="relative">
-                <img
-                  src={article.image}
-                  alt={article.title}
-                  className="w-8 h-8 object-cover rounded"
-                />
-                <p className="absolute top-0 left-0 bg-blue-500 text-white p-2 text-xs rounded-t">
-                  <a
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {article.title}
-                  </a>
-                </p>
-              </div>
-            </a>
-            <p className="text-gray-500">{article.summary}</p>
+          <div key={index} className="p-4 relative">
+            {article.image_url && (
+              <img
+                src={article.image_url}
+                alt={article.title}
+                className="w-20 h-25 object-cover rounded-20 p-5"
+              />
+            )}
+            <div className="absolute top-0 left-0 bg-blue-800 bg-opacity-75 text-white p-1 m-9 ml-9 rounded-t">
+              <a
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                {article.title}
+              </a>
+            </div>
+            <div className="mt-4 text-gray-500">{article.description}</div>
           </div>
         ))}
       </Carousel>
     </div>
   );
 };
+
 export default StockNews;
