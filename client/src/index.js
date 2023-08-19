@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Login } from "./Pages/Login";
 
 const googleClientID = process.env.REACT_APP_GOOGLE_LOGIN;
-// console.log(process.env);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -21,7 +21,7 @@ root.render(
       </Router>
 
     </React.StrictMode>
-  // </GoogleOAuthProvider>
+</GoogleOAuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
