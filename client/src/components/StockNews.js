@@ -42,10 +42,10 @@ const StockNews = () => {
               <img
                 src={article.image_url}
                 alt={article.title}
-                className="w-30 h-auto object-cover rounded"
+                className="w-20 h-25 object-cover rounded-20 p-5"
               />
             )}
-            <div className="absolute top-0 left-0 bg-blue-800 bg-opacity-75 text-white p-1 rounded-t">
+            <div className="absolute top-0 left-0 bg-blue-800 bg-opacity-75 text-white p-1 m-9 ml-9 rounded-t">
               <a
                 href={article.url}
                 target="_blank"
