@@ -11,7 +11,7 @@ import { Login } from "./Pages/Login";
 
 
 const googleClientID = process.env.REACT_APP_GOOGLE_LOGIN;
-// console.log(process.env);
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
