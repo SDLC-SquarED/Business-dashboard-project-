@@ -3,6 +3,7 @@ import axios from "axios";
 import { BsSearch } from "react-icons/bs";
 import DarkModeButton from "./DarkModeButton";
 import debounce from 'lodash.debounce';
+import logo from "../assets/logo.png";
 
 const apiKey= process.env.REACT_APP_IEX;
 console.log(apiKey)
@@ -65,20 +66,20 @@ const SearchBar = (props) => {
   }
 
   return (
-    <div className="flex items p-5">
-      <BsSearch id="BsSearch" className="mr-1" />
+    <div className="grid grid-cols-8 pt-5">
+      <img src={logo} alt="Company Logo" className="col-span-1 ml-5" />
 
+      <BsSearch id="BsSearch" className="col-span-1 justify-self-end" />
       <input
+        className="col-span-2"
         type="text"
-        width={1}
         placeholder="Enter a ticker symbol"
         value={inputValue}
         onChange={handleSearchChange}
-        className="flex-1 outline-none borer rounded-l-none"
       />
-
-{isLoaded && <button onClick={() => setLoaded(false)} ></button>}
-    <DarkModeButton />
+     
+      <div className="col-span-3"></div> {/* Empty space */}
+      <p className="col-span-1 justify-self-end mr-4"><DarkModeButton/></p>
     </div>
   );
 };
