@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
-import { googleLogout } from '@react-oauth/google';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import React, { useEffect } from "react";
+import { googleLogout } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 export const Logout = () => {
   const navigate = useNavigate(); // Get the navigate function
 
   useEffect(() => {
+    localStorage.removeItem("userInfo");
     googleLogout();
-    navigate('/'); // Redirect to the login page
+    navigate("/"); // Redirect to the login page
   }, [navigate]);
 
   return (
