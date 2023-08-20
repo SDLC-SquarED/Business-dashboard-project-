@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { StockChart } from "./components/StockChart";
 import StockNews from "./components/StockNews";
 import { LineChart } from "./components/lineChart";
-import { TickerCard } from "./components/TickerCard";
 import BitcoinChart from "./components/bitcoinchart"
 
 import SearchBar from "./components/SearchBar"
@@ -27,12 +26,6 @@ function App() {
       {/* Header */}
       <div className="h-16 bg-gradient-to-r from-neutral-400 via-neutral-300 to-zinc-300 mb-4">
         <SearchBar onDataLoaded={handleDataLoaded} />
-      </div>
-      {/* Left Sidebar Top Rectangle */}
-      <div className="flex-1 bg-amber-400 mb-4">
-        {/* TickerCard Component */}
-        <TickerCard />
-        <p className="text-white text-center p-4">Left Sidebar Top Rectangle</p>
       </div>
 
       <div className="flex flex-col md:flex-row flex-1 mb-4">
