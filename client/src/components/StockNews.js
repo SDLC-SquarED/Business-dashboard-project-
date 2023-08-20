@@ -42,7 +42,7 @@ const StockNews = () => {
               <img
                 src={article.image_url}
                 alt={article.title}
-                className="w-20 h-25 object-cover rounded-20 p-5"
+                className="w-25 h-22 object-cover rounded-20 p-4"
               />
             )}
             <div className="absolute top-0 left-0 bg-blue-800 bg-opacity-75 text-white p-1 m-9 ml-9 rounded-t">

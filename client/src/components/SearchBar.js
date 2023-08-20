@@ -4,9 +4,11 @@ import { BsSearch } from "react-icons/bs";
 import DarkModeButton from "./DarkModeButton";
 import debounce from 'lodash.debounce';
 import logo from "../assets/logo.png";
+import { googleLogout } from '@react-oauth/google';
+import { Link } from 'react-router-dom'; // Import Link
 
-const apiKey= process.env.REACT_APP_IEX;
-console.log(apiKey)
+const apiKey = process.env.REACT_APP_IEX;
+console.log(apiKey);
 
 const SearchBar = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,21 +16,18 @@ const SearchBar = (props) => {
   const [error, setError] = useState(null);
   const [isLoaded, setLoaded] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  
 
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
-  
+
   const debouncedSearch = useCallback(
     debounce((nextValue) => handleSearch(nextValue), 800),
     []
   );
-  
 
   useEffect(() => {
     if (searchQuery.trim() !== "") {
-      //Trim stops making a request when only empty spaces are typed in the search bar
       const url = `https://api.iex.cloud/v1/data/core/company/${searchQuery}?token=${apiKey}`;
 
       axios
@@ -36,12 +35,12 @@ const SearchBar = (props) => {
         .then((response) => {
           const responseData = response.data;
           if (responseData.Note) {
-            setError(responseData.Note); // Handle API rate limit error
+            setError(responseData.Note);
           } else {
-            console.log(responseData)
+            console.log(responseData);
             setData(responseData);
             setLoaded(true);
-                 if(props.onDataLoaded) {
+            if (props.onDataLoaded) {
               props.onDataLoaded(responseData);
             }
           }
@@ -57,8 +56,12 @@ const SearchBar = (props) => {
   }, [searchQuery]);
 
   const handleSearchChange = (event) => {
-    setInputValue(event.target.value)
+    setInputValue(event.target.value);
     debouncedSearch(event.target.value);
+  };
+
+  const handleLogout = () => {
+    googleLogout();
   };
 
   if (error) {
@@ -68,8 +71,9 @@ const SearchBar = (props) => {
   return (
     <div className="grid grid-cols-8 pt-5">
       <img src={logo} alt="Company Logo" className="col-span-1 ml-5" />
-
+      
       <BsSearch id="BsSearch" className="col-span-1 justify-self-end" />
+      
       <input
         className="col-span-2"
         type="text"
@@ -77,10 +81,23 @@ const SearchBar = (props) => {
         value={inputValue}
         onChange={handleSearchChange}
       />
-     
+      
       <div className="col-span-3"></div> {/* Empty space */}
-      <p className="col-span-1 justify-self-end mr-4"><DarkModeButton/></p>
+      
+      <div className="col-span-1 flex justify-end items-center mr-4">
+        <Link to="/portfolio" className="mr-4 text-blue-500 hover:underline">
+          Portfolio
+        </Link>
+        <Link to="/watchlist" className="mr-4 text-blue-500 hover:underline">
+          Watchlist
+        </Link>
+        <Link to="/logout" className="mr-4 text-blue-500 hover:underline">
+          Logout
+        </Link>
+        <DarkModeButton />
+      </div>
     </div>
   );
 };
+
 export default SearchBar;
