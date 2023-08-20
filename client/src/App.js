@@ -38,15 +38,12 @@ function App() {
         {/* Left sidebars */}
         <div className="flex-none w-full md:w-1/4 flex flex-col mb-4 md:mb-0 md:mr-4">
           {/* Left Sidebar Top Rectangle */}
-          <ChartComponent />
-
+            <TickerCard selectedTicker={selectedTicker}/>
           <div className="flex-1 mb-4"></div>
-
           {/* Left sidebar bottom rectangle */}
           <div className="flex-1 bg-zinc-300">
-            <p className="text-white text-center p-4  bg-amber-400">
-              <TickerCard />
-              <BitcoinChart />
+            <p className="text-white text-center p-4  bg-amber-400">     
+              <ChartComponent />
             </p>
           </div>
         </div>
