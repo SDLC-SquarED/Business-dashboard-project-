@@ -60,12 +60,12 @@ const Login = () => {
         backgroundSize: "cover",
       }}
     >
-      <h2 className="text-2xl font-bold mb-4">React Google Login</h2>
+      <h2 className="text-2xl font-bold mb-4"></h2>
       <br />
       <br />
       <button
         onClick={() => login()}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        className="px-4 py-2 bg-blue-800 text-white rounded-2xl hover:bg-blue-900"
       >
         Sign in with Google 🚀
       </button>

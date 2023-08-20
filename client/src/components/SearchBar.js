@@ -84,14 +84,14 @@ const SearchBar = (props) => {
       <div className="col-span-3"></div> {/* Empty space */}
       <div className="col-span-1 flex justify-end items-center mr-4">
         <div className="flex items-center"> {/* Wrap the Welcome message */}
-          <p className="mr-10 pr-10 text-black-800">Welcome, {username}!</p> {/* Add more spacing */}
-          <Link to="/portfolio" className="mr-4 text-blue-500 hover:underline">
+          <p className="mr-12 pr-12 text-black-800 font-bold">Welcome,{username}!</p> {/* Add more spacing */}
+          <Link to="/portfolio" className="mr-4 text-blue-700 font-bold first-letter:hover:underline">
             Portfolio
           </Link>
-          <Link to="/watchlist" className="mr-4 text-blue-500 hover:underline">
+          <Link to="/watchlist" className="mr-4 text-blue-700 font-bold hover:underline">
             Watchlist
           </Link>
-          <Link to="/logout" className="mr-4 text-blue-500 hover:underline">
+          <Link to="/logout" className="mr-4 text-blue-700 font-bold hover:underline">
             Logout
           </Link>
         </div>
