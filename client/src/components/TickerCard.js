@@ -5,6 +5,7 @@ import { FiHelpCircle } from 'react-icons/fi';
 export const TickerCard = () => {
   const [stockData, setStockData] = useState([]);
 
+  
   useEffect(() => {
     const apiUrl = `https://api.iex.cloud/v1/data/CORE/HISTORICAL_PRICES/MSFT?token=sk_f2e1bc88cb154c7e8b4ca5a3a68bc80c`;
 
