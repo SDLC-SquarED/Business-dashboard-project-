@@ -6,7 +6,7 @@ export const TickerCard = () => {
   const [metaData, setMetaData] = useState({});
   const [stockData, setStockData] = useState([]);
 
-  
+
   useEffect(() => {
     const apiKey = "gPHn8kB1bTYbxwbII0ZUw6KagpfghRCIVfCVJlFs";
     const ticker = "MMC"
@@ -15,7 +15,7 @@ export const TickerCard = () => {
     const headers = {
       Authorization: `Bearer ${apiKey}`
     };
-
+// this is a test
     fetch(apiUrl, { headers })
       .then(response => response.json())
       .then(data => {
