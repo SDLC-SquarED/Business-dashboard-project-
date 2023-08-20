@@ -12,19 +12,26 @@ import ChartComponent from "./components/bitcoinline";
 
 function App() {
   const [companyData, setCompanyData] = useState(null);
+  const [selectedTicker, setSelectedTicker] = useState("MMC");
+
   const closeModal = () => {
     setCompanyData(null);
   };
+
   const handleDataLoaded = (data) => {
     console.log(data);
     setCompanyData(data);
+  };
+
+  const handleTickerChange = (ticker) => {
+    setSelectedTicker(ticker);
   };
 
   return (
     <div className="h-screen w-full bg-gray-100 p-4 dark:bg-black">
       {/* Header */}
       <div className="h-16 bg-gradient-to-r from-neutral-400 via-neutral-300 to-zinc-300 mb-4">
-        <SearchBar onDataLoaded={handleDataLoaded} />
+        <SearchBar onDataLoaded={handleDataLoaded} onTickerChange={handleTickerChange} />
       </div>
 
       <div className="flex flex-col md:flex-row flex-1 mb-4">
@@ -49,7 +56,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full h-full">
             {/* Left middle rectangle */}
             <div className="bg-zinc-300 p-4">
-              <StockChart />
+              <StockChart ticker={selectedTicker} />
             </div>
 
             {/* Right middle chart */}
