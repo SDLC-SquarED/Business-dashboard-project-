@@ -6,6 +6,7 @@ export const TickerCard = () => {
   const [metaData, setMetaData] = useState({});
   const [stockData, setStockData] = useState([]);
 
+  
   useEffect(() => {
     const apiKey = "gPHn8kB1bTYbxwbII0ZUw6KagpfghRCIVfCVJlFs";
     const ticker = "MMC"
