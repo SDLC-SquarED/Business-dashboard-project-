@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"; // Import Link
 const apiKey = process.env.REACT_APP_IEX;
 console.log(apiKey);
 
-const SearchBar = (props) => {
+const SearchBar = ({onDataLoaded, onTickerChange} ) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -40,8 +40,8 @@ const SearchBar = (props) => {
             console.log(responseData);
             setData(responseData);
             setLoaded(true);
-            if (props.onDataLoaded) {
-              props.onDataLoaded(responseData);
+            if (onDataLoaded) {
+              onDataLoaded(responseData);
             }
           }
         })
@@ -56,8 +56,10 @@ const SearchBar = (props) => {
   }, [searchQuery]);
 
   const handleSearchChange = (event) => {
-    setInputValue(event.target.value);
-    debouncedSearch(event.target.value);
+    const value = event.target.value.toUpperCase();
+    setInputValue(value);
+    debouncedSearch(value);
+    onTickerChange(value);
   };
 
   const handleLogout = () => {
