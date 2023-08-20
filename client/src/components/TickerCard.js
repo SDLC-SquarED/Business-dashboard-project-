@@ -7,7 +7,8 @@ export const TickerCard = ({ selectedTicker }) => {
   const [stockData, setStockData] = useState([]);
 
   useEffect(() => {
-    const apiKey = "gPHn8kB1bTYbxwbII0ZUw6KagpfghRCIVfCVJlFs";
+    const apiKey = process.env.REACT_APP_TICKER_CARD;
+    console.log(apiKey);
     const apiUrl = `https://api.stockdata.org/v1/data/quote?symbols=${selectedTicker}&api_token=${apiKey}`;
 
     const headers = {
