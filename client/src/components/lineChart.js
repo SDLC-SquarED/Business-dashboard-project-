@@ -125,16 +125,14 @@ export const LineChart = () => {
 
   const options = {
     responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: "Unemployment and Inflation over time",
-      },
-    },
+    plugins: {},
   };
 
   return (
     <>
+      <h2 className="text-lg font-semibold m-4">
+        Unemployment and Inflation over time
+      </h2>
       <Line options={options} data={data} />
     </>
   );

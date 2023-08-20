@@ -45,7 +45,7 @@ function App() {
           <div className="flex-1 mb-4"></div>
           {/* Left sidebar bottom rectangle */}
           <div className="flex-1 bg-zinc-300">
-            <p className="text-white text-center p-4">
+            <p className="text-center p-4">
               {/* <ChartComponent /> */}
               <BitcoinChart />
             </p>

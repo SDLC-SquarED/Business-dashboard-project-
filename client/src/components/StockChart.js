@@ -6,7 +6,6 @@ export const StockChart = ({ ticker }) => {
   const [data, setData] = useState([]);
   const [interval, setInterval] = useState("daily");
 
-
   const fetchData = async (selectedInterval) => {
     try {
       const apiKey = process.env.REACT_APP_STOCKCHART;
@@ -19,7 +18,6 @@ export const StockChart = ({ ticker }) => {
 
       const response = await axios.get(
         `https://www.alphavantage.co/query?function=${intervalMap[selectedInterval]}&symbol=${symbol}&apikey=${apiKey}`
-
       );
 
       const timeSeries = response.data["Time Series (Daily)"];
@@ -73,30 +71,41 @@ export const StockChart = ({ ticker }) => {
       <div className="space-x-4 mt-4">
         <button
           className={`py-2 px-4 rounded focus:outline-none ${
-            interval === 'daily' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+            interval === "daily"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-200 text-gray-700"
           }`}
-          onClick={() => handleIntervalChange('daily')}
+          onClick={() => handleIntervalChange("daily")}
         >
           Daily
         </button>
         <button
           className={`py-2 px-4 rounded focus:outline-none ${
-            interval === 'weekly' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+            interval === "weekly"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-200 text-gray-700"
           }`}
-          onClick={() => handleIntervalChange('weekly')}
+          onClick={() => handleIntervalChange("weekly")}
         >
           Weekly
         </button>
         <button
           className={`py-2 px-4 rounded focus:outline-none ${
-            interval === 'monthly' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'
+            interval === "monthly"
+              ? "bg-blue-500 text-white"
+              : "bg-gray-200 text-gray-700"
           }`}
-          onClick={() => handleIntervalChange('monthly')}
+          onClick={() => handleIntervalChange("monthly")}
         >
           Monthly
         </button>
       </div>
-      <ReactApexChart options={options} series={[{ data: data }]} type="candlestick" height={400} />
+      <ReactApexChart
+        options={options}
+        series={[{ data: data }]}
+        type="candlestick"
+        height={400}
+      />
     </div>
   );
 };
