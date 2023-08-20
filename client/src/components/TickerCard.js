@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { HiHeart, HiOutlineBell } from 'react-icons/hi';
 import { FiHelpCircle } from 'react-icons/fi';
 
-export const TickerCard = () => {
+export const TickerCard = ({ selectedTicker }) => {
   const [metaData, setMetaData] = useState({});
   const [stockData, setStockData] = useState([]);
 
 
   useEffect(() => {
     const apiKey = "gPHn8kB1bTYbxwbII0ZUw6KagpfghRCIVfCVJlFs";
-    const ticker = "MMC"
-    const apiUrl = `https://api.stockdata.org/v1/data/quote?symbols=${ticker}&api_token=${apiKey}`;
+    const apiUrl = `https://api.stockdata.org/v1/data/quote?symbols=${selectedTicker}&api_token=${apiKey}`;
 
     const headers = {
       Authorization: `Bearer ${apiKey}`
@@ -26,7 +25,7 @@ export const TickerCard = () => {
       .catch(error => {
         console.error('Error fetching stock data:', error);
       });
-  }, []);
+  }, [selectedTicker]);
 
   const handleIconClick = (action) => {
     console.log(`Clicked ${action} icon`);
