@@ -2,16 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 
-export const StockChart = () => {
+export const StockChart = ({ ticker }) => {
   const [data, setData] = useState([]);
   const [interval, setInterval] = useState("daily");
 
-  const ticker = "MMC";
 
   const fetchData = async (selectedInterval) => {
     try {
-      // const apiKey = 'S7SGFN9B5587KDLS';
-      const apiKey = "1KK0ID0UN3K5BX02";
+      const apiKey = process.env.REACT_APP_STOCKCHART;
       const symbol = ticker;
       const intervalMap = {
         daily: "TIME_SERIES_DAILY",
@@ -22,7 +20,6 @@ export const StockChart = () => {
       const response = await axios.get(
         `https://www.alphavantage.co/query?function=${intervalMap[selectedInterval]}&symbol=${symbol}&apikey=${apiKey}`
 
-        //`https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=MMC&apikey=S7SGFN9B5587KDLS`
       );
 
       const timeSeries = response.data["Time Series (Daily)"];
@@ -44,7 +41,7 @@ export const StockChart = () => {
 
   useEffect(() => {
     fetchData(interval);
-  }, [interval]);
+  }, [interval, ticker]);
 
   const handleIntervalChange = (selectedInterval) => {
     setInterval(selectedInterval);
