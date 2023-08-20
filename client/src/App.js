@@ -4,7 +4,7 @@ import { StockChart } from "./components/StockChart";
 import StockNews from "./components/StockNews";
 import { LineChart } from "./components/lineChart";
 import BitcoinChart from "./components/bitcoinchart";
-import { TickerCard } from "./components/TickerCard"
+import { TickerCard } from "./components/TickerCard";
 
 import SearchBar from "./components/SearchBar";
 import CompanyModal from "./components/CompanyModal";
@@ -28,22 +28,26 @@ function App() {
   };
 
   return (
-    <div className="h-screen w-full bg-gray-100 p-4 dark:bg-black">
+    <div className="h-full w-full bg-gray-100 p-4 dark:bg-black">
       {/* Header */}
       <div className="h-16 bg-gradient-to-r from-neutral-400 via-neutral-300 to-zinc-300 mb-4">
-        <SearchBar onDataLoaded={handleDataLoaded} onTickerChange={handleTickerChange} />
+        <SearchBar
+          onDataLoaded={handleDataLoaded}
+          onTickerChange={handleTickerChange}
+        />
       </div>
 
-      <div className="flex flex-col md:flex-row flex-1 mb-4">
+      <div className="flex flex-col md:flex-row flex-1 mb-4 content-center">
         {/* Left sidebars */}
-        <div className="flex-none w-full md:w-1/4 flex flex-col mb-4 md:mb-0 md:mr-4">
+        <div className="flex-none justify-center md:w-1/4 flex flex-col mb-4 md:mb-0 md:mr-4">
           {/* Left Sidebar Top Rectangle */}
-            <TickerCard selectedTicker={selectedTicker}/>
+          <TickerCard selectedTicker={selectedTicker} />
           <div className="flex-1 mb-4"></div>
           {/* Left sidebar bottom rectangle */}
           <div className="flex-1 bg-zinc-300">
-            <p className="text-white text-center p-4  bg-amber-400">     
-              <ChartComponent />
+            <p className="text-white text-center p-4">
+              {/* <ChartComponent /> */}
+              <BitcoinChart />
             </p>
           </div>
         </div>
@@ -65,9 +69,11 @@ function App() {
       </div>
 
       {/* News */}
-      <p className="text-black font-extrabold text-xl text-center ">Latest News</p>
-      <div className="h-1/2.5 bg-cyan-600 mt-0">
-      <StockNews />
+      <p className="text-black font-extrabold text-xl text-center ">
+        Latest News
+      </p>
+      <div className="h-1/2.5 bg-cyan-600 mt-0 dark:bg-black">
+        <StockNews />
       </div>
       {companyData && (
         <CompanyModal companyData={companyData} onClose={closeModal} />
