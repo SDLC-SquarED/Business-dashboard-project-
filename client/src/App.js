@@ -4,6 +4,7 @@ import { StockChart } from "./components/StockChart";
 import StockNews from "./components/StockNews";
 import { LineChart } from "./components/lineChart";
 import BitcoinChart from "./components/bitcoinchart";
+import { TickerCard } from "./components/TickerCard"
 
 import SearchBar from "./components/SearchBar";
 import CompanyModal from "./components/CompanyModal";
@@ -37,7 +38,7 @@ function App() {
           {/* Left sidebar bottom rectangle */}
           <div className="flex-1 bg-zinc-300">
             <p className="text-white text-center p-4  bg-amber-400">
-              Side Bar Bottom Rectangle
+              <TickerCard />
               <BitcoinChart />
             </p>
           </div>
@@ -60,9 +61,9 @@ function App() {
       </div>
 
       {/* News */}
-      <p className="text-black text-center p-4">News</p>
-      <div className="h-1/2.5 bg-cyan-600 mt-4">
-        <StockNews />
+      <p className="text-black font-extrabold text-xl text-center ">Latest News</p>
+      <div className="h-1/2.5 bg-cyan-600 mt-0">
+      <StockNews />
       </div>
       {companyData && (
         <CompanyModal companyData={companyData} onClose={closeModal} />
