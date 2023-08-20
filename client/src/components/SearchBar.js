@@ -2,10 +2,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { BsSearch } from "react-icons/bs";
 import DarkModeButton from "./DarkModeButton";
-import debounce from 'lodash.debounce';
+import debounce from "lodash.debounce";
 import logo from "../assets/logo.png";
-import { googleLogout } from '@react-oauth/google';
-import { Link } from 'react-router-dom'; // Import Link
+import { googleLogout } from "@react-oauth/google";
+import { Link } from "react-router-dom"; // Import Link
 
 const apiKey = process.env.REACT_APP_IEX;
 console.log(apiKey);
@@ -68,12 +68,12 @@ const SearchBar = (props) => {
     return <div>Error: {error}</div>;
   }
 
+  const username = localStorage.getItem("userInfo");
+
   return (
     <div className="grid grid-cols-8 pt-5">
       <img src={logo} alt="Company Logo" className="col-span-1 ml-5" />
-      
       <BsSearch id="BsSearch" className="col-span-1 justify-self-end" />
-      
       <input
         className="col-span-2"
         type="text"
@@ -81,10 +81,9 @@ const SearchBar = (props) => {
         value={inputValue}
         onChange={handleSearchChange}
       />
-      
       <div className="col-span-3"></div> {/* Empty space */}
-      
       <div className="col-span-1 flex justify-end items-center mr-4">
+        <p>Welcome, {username}!</p>
         <Link to="/portfolio" className="mr-4 text-blue-500 hover:underline">
           Portfolio
         </Link>
