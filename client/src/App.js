@@ -73,7 +73,7 @@ function App() {
         Latest News
       </p>
       <div className="h-1/2.5 bg-cyan-600 mt-0 dark:bg-black">
-        <StockNews />
+        <StockNews ticker={selectedTicker} />
       </div>
       {companyData && (
         <CompanyModal companyData={companyData} onClose={closeModal} />

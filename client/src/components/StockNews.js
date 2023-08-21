@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-const StockNews = () => {
+const StockNews = ({ ticker }) => {
   const [newsData, setNewsData] = useState([]);
   useEffect(() => {
     const apiKey = process.env.REACT_APP_NEWS_IEX;
-    const apiUrl = `https://api.stockdata.org/v1/news/all?symbols=TSLA,AMZN,MSFT&filter_entities=true&language=en&api_token=${apiKey}`;
-    
+    const apiUrl = `https://api.stockdata.org/v1/news/all?symbols=${ticker}&filter_entities=true&language=en&api_token=${apiKey}`;
+
     axios
       .get(apiUrl)
       .then((response) => {
@@ -20,7 +20,7 @@ const StockNews = () => {
       .catch((error) => {
         console.error("Error fetching stock news:", error);
       });
-  }, []);
+  }, [ticker]);
   return (
     <div className="bg-gray-00 p-0 rounded shadow text-center">
       <Carousel
@@ -60,4 +60,3 @@ const StockNews = () => {
   );
 };
 export default StockNews;
-
